@@ -1,10 +1,10 @@
 """
 loops
 
-A for loop in Python is a control structure that lets you repeat a block of code for each item in a sequence 
+A for loop in Python is a control structure that lets you repeat a block of code for each item in a sequence
 (such as a list, string, tuple, dictionary, or a range of numbers).
 
-❌It's used when you know how many times you want to repeat an action or when you want to process each element in a collection.
+It's used when you know how many times you want to repeat an action or when you want to process each element in a collection.
 
 
 for variable in sequence:
@@ -12,10 +12,10 @@ for variable in sequence:
 """
 
 # Loop through a list
-fruits = ["apple", "banana", "cherry"] # convert to tuple use () not [] 
+fruits = ["apple", "banana", "cherry"] # convert to tuple use () not []
 for fruit in fruits: # for each fruit in the list fruits
     print(fruit)
- 
+
 
 print("__________________________________")
 
@@ -29,9 +29,9 @@ print("__________________________________")
 # range() generates a sequence of numbers
 
 for x in range(5): # hover over range and show that it stops
-    print(x)  # Prints 0,1,2,3,4 Because range() only includes 
+    print(x)  # Prints 0,1,2,3,4 Because range() only includes
               # numbers that are strictly less than the stop value.
-              # remember indexing starts at 0. soo 5 is actually 4 0,1,2,3,4
+              # range(5) gives you 5 numbers, starting at 0: 0,1,2,3,4 (it stops BEFORE 5)
 print("__________________________________")
 
 # Start and end range
@@ -39,17 +39,6 @@ for x in range(2, 6):
     print(x)  # Prints 2,3,4,5
 
 print("__________________________________")
-
-for number in range(2, 6):  # 2 to 5
-    print(number)
-
-print("__________________________________")
-
-
-for number in range(0, 10, 2):  # 0 to 8, step 2
-    print(number)
-
-
 
 # Step (skip numbers)
 for x in range(0, 10, 2): # start at 0, go up to 10, step by 2
@@ -64,6 +53,15 @@ for x in range(3): #
     print(x)
 else: # runs when loop is done
     print("Loop done!")
+
+# else is most useful together with break:
+# it runs only if the loop finished WITHOUT hitting a break
+for number in [3, 7, 9]:
+    if number % 2 == 0:
+        print("Found an even number!")
+        break
+else:
+    print("No even numbers found")   # runs, because break never happened
 
 print("__________________________________")
 
@@ -126,8 +124,20 @@ for row in range(1, 4):
 print("__________________________________")
 
 
+# -------------------------------
+# RUNNING TOTAL (the "accumulator" pattern) -- you will use this ALL the time
+# -------------------------------
+prices = [4.50, 3.25, 10.00]
+total = 0             # start at 0
+for price in prices:
+    total += price    # add each price to the running total
+print(total)          # 17.75
+
+print("__________________________________")
+
+
 """
-Mini-challenge- Multiplication table
+MINI CHALLENGE (SIMPLE · 5-10 min): Multiplication Table
 1. Ask the user to enter a number and store it in a variable called num.
 2. Use a for loop with range(1, 11) to repeat 10 times (from 1 to 10).
 3. Inside the loop, multiply num by the current loop value (i).
@@ -144,9 +154,9 @@ print("__________________________________")
 
 
 """
--------------------------------
-MINI CHALLENGE: FOR LOOP
--------------------------------
+===============================================================
+MINI CHALLENGE (HARDER · ~10 min): FOR LOOP
+===============================================================
 Student Score Analyzer
 1. Create a list called scores containing:
 [85, 92, 67, 78, 95, 88]
@@ -180,3 +190,21 @@ print("Passing students:", passing_scores)
 
 if passing_scores >= 5:
     print("Excellent class performance!")
+
+
+"""
+EXTRA PRACTICE: Long Words
+1. Create a list with some words.
+2. Use a for loop to go through each word.
+3. Count how many words have 5 or more letters (hint: len()).
+4. Print the result.
+"""
+
+words = ["apple", "hi", "banana", "dog", "computer", "sun"]
+count = 0                        # we haven't counted anything yet
+
+for word in words:               # go through each word in the list
+    if len(word) >= 5:           # if the word has 5 or more letters
+        count += 1               # add 1 to the counter
+
+print("There are", count, "long words.")

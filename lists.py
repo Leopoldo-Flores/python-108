@@ -12,7 +12,7 @@ print(my_list)
 
 # Lists can contain different data types
 mixed_list = [1, "apple", 3.5, True]
-print(mixed_list) 
+print(mixed_list)
 
 # -------------------------------
 # WHERE LISTS FIT IN (vs tuples, sets, dictionaries)
@@ -115,6 +115,13 @@ if "mango" in fruits:
 print(len(fruits))  # Number of items in list
 
 # -------------------------------
+# INDEX ERRORS (going past the end of the list)
+# -------------------------------
+# If a list has 4 items, the valid indexes are 0, 1, 2, 3.
+# print(fruits[10])   # IndexError: list index out of range  <- uncomment to show them the error
+# Tip: the LAST valid index is always len(list) - 1  (or just use [-1])
+
+# -------------------------------
 # USEFUL LIST METHODS
 # -------------------------------
 numbers = [4, 2, 9, 1, 7]
@@ -133,6 +140,20 @@ print(numbers)
 
 numbers_copy = numbers.copy()  # Makes a real COPY (see note below on why this matters)
 print(numbers_copy)
+
+# .sort() CHANGES the list itself and returns None.
+# sorted() leaves the list alone and gives you a NEW sorted list.
+scores_demo = [70, 95, 82]
+print(sorted(scores_demo))   # [70, 82, 95]
+print(scores_demo)           # [70, 95, 82]  <- unchanged
+# Common bug: scores_demo = scores_demo.sort()   -> scores_demo becomes None!
+
+# -------------------------------
+# NUMBER LISTS: range(), sum(), min(), max()
+# -------------------------------
+nums = list(range(1, 6))     # [1, 2, 3, 4, 5]
+print(nums)
+print(sum(nums), min(nums), max(nums))   # 15 1 5
 
 # -------------------------------
 # WHY .copy() MATTERS (a common beginner bug)
@@ -171,9 +192,9 @@ print(even_only)  # [2, 4, 6, 8, 10]
 
 
 
-# -------------------------------
-#  MINI CHALLENGE: THE GROCERY LIST
-# -------------------------------
+# ===============================================================
+#  MINI CHALLENGE (SIMPLE · 5-10 min): THE GROCERY LIST
+# ===============================================================
 # You're building a grocery list app.
 
 # 1. Create a list called "groceries" with at least 5 items.
@@ -201,7 +222,7 @@ print("Last item:", groceries[-1])
 
 # Slice the first 3 items
 print("First 3 items:", groceries[:3])
- 
+
 # Add "eggs" to the end
 groceries.append("eggs")
 
@@ -228,19 +249,19 @@ print("Total items:", len(groceries))
 
 
 """
--------------------------------
-MINI CHALLENGE: HIGH SCORE BOARD
--------------------------------
+===============================================================
+MINI CHALLENGE (HARDER · ~10 min): HIGH SCORE BOARD
+===============================================================
 You are building a leaderboard for a game.
 
-1. Create a list called "scores" with at least 6 integer scores.
+1. Create a list called "scores" with at least 6 integer scores (repeat one of them!).
 2. Use a list comprehension to create "bonus_scores" where every
    score has 10 points added to it.
 3. Sort "bonus_scores" from highest to lowest.
 4. Print the TOP 3 scores using slicing.
-5. Use count() to check how many times a specific score appears.
-6. Remove the LOWEST score from the list using pop() and the index
-   of the minimum value (hint: use .index(min(list))).
+5. Use count() to check how many times your repeated score appears (after the bonus).
+6. Remove the LOWEST score from the list. (hint: your list is already sorted --
+   where does the lowest score sit?)
 7. Print the final list and how many scores remain.
 """
 
@@ -250,7 +271,7 @@ You are building a leaderboard for a game.
 # -------------------------------
 
 # Create the list of scores
-scores = [85, 92, 67, 78, 95, 88]
+scores = [85, 92, 67, 78, 95, 88, 92]   # 92 appears twice
 
 # List comprehension: add 10 bonus points to every score
 bonus_scores = [score + 10 for score in scores]
@@ -262,13 +283,12 @@ print("Bonus scores (sorted):", bonus_scores)
 # Top 3 scores using slicing
 print("Top 3 scores:", bonus_scores[:3])
 
-# Count how many times a specific score appears
-print("Times 105 appears:", bonus_scores.count(105))
+# Count how many times a specific score appears (92 + 10 = 102, which appears twice)
+print("Times 102 appears:", bonus_scores.count(102))
 
-# Remove the lowest score
-lowest_index = bonus_scores.index(min(bonus_scores))
-bonus_scores.pop(lowest_index)
+# Remove the lowest score: the list is sorted high -> low, so the lowest is the LAST item
+bonus_scores.pop()
 
 # Final results
 print("Final scores:", bonus_scores)
-print("Total scores remaining:", len(bonus_scores))
+print("Total scores remaining:", len(bonus_scores)) 

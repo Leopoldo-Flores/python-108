@@ -11,7 +11,7 @@ def function_name(parameters):
 
 # Why use functions?
 # - To avoid repeating code
-# - To organize code into small, reusable pieces 
+# - To organize code into small, reusable pieces
 # - To make programs easier to read and maintain
 """
 # -------------------------------
@@ -24,9 +24,9 @@ def my_function():
     print("This is my function")  # This line runs when the function is called
 
 # Calling the function
-my_function()  
+my_function()
 
- 
+
 # -------------------------------
 # 2. Another simple function
 # -------------------------------
@@ -64,7 +64,7 @@ print(full_name)
 
 # Functions with Default Parameters
 
-# A default parameter means the function will use that value 
+# A default parameter means the function will use that value
 # if no argument is provided when calling the function.
 
 def greet(name="Student"):
@@ -75,6 +75,38 @@ greet()   # Output: Hello, Student! Welcome to class.
 
 # Calling with an argument → overrides the default
 greet("Leo")   # Output: Hello, Leo! Welcome to class.
+
+
+# -------------------------------
+# PASSING A LIST TO A FUNCTION
+# -------------------------------
+def print_items(items):
+    for item in items:
+        print("-", item)
+
+print_items(["apple", "banana", "cherry"])
+
+
+# -------------------------------
+# RETURNING MORE THAN ONE VALUE
+# -------------------------------
+# A function can return several values at once. Python packs them into a
+# tuple, and you can unpack them (just like in tuples.py).
+def min_and_max(numbers):
+    return min(numbers), max(numbers)
+
+lowest, highest = min_and_max([4, 9, 2, 7])
+print(lowest, highest)   # 2 9
+
+
+# -------------------------------
+# DOCSTRINGS -- describe what your function does
+# -------------------------------
+def area(width, height):
+    """Return the area of a rectangle."""
+    return width * height
+
+print(area(3, 4))   # 12
 
 
 # -------------------------------
@@ -136,7 +168,7 @@ make_local_variable()
 
 # A variable created OUTSIDE any function is "global" -- functions CAN
 # read it, but changing it inside a function needs the "global" keyword.
- 
+
 score = 0  # global variable
 
 def increase_score():
@@ -166,57 +198,24 @@ students.sort(key=lambda student: student[1])  # sort by the score (2nd item)
 print(students)
 
 
+# -------------------------------
+# MODULES -- using code that lives in another file
+# -------------------------------
+import math                  # a module that comes with Python (the "standard library")
+print(math.sqrt(16))         # 4.0
 
-"""
--------------------------------
-MINI CHALLENGE: MOVIE TICKET PRICE
--------------------------------
-Create a function called calculate_ticket_price().
+from random import randint   # import just one thing from a module
+print(randint(1, 10))        # a random number from 1 to 10 (different every run!)
 
-1. The function should accept:
-    - age
-    - is_student (default value = False)
-2. Ticket pricing rules:
-    - Under 13 years old → $8
-    - 13 to 64 years old → $12
-      - 65 and older → $10
-3. If is_student is True,
-      subtract $2 from the ticket price.
-4. Return the final ticket price.
-5. Call the function twice:
-      - One regular customer
-      - One student
-6. Print the returned prices.
-"""
-
-def calculate_ticket_price(age, is_student=False):
-
-    if age < 13:
-        price = 8
-    elif age >= 65:
-        price = 10
-    else:
-        price = 12
-
-    if is_student:
-        price -= 2
-
-    return price
-
-ticket1 = calculate_ticket_price(30)
-ticket2 = calculate_ticket_price(20, True)
-
-print("Regular Ticket: $", ticket1)
-print("Student Ticket: $", ticket2)
-
-
+# You can import YOUR OWN files too -- that's what store.py does:
+#     from catalog import catalog     (catalog.py holds the product list)
 
 
 
 """
--------------------------------
-MINI CHALLENGE: PASSWORD CHECKER
--------------------------------
+===============================================================
+MINI CHALLENGE (SIMPLE · 5-10 min): PASSWORD STRENGTH
+===============================================================
 Create a function called check_password().
 
 1. The function should accept one parameter:
@@ -257,3 +256,47 @@ print(result)
 
 if "!" in user_password:
     print("Special character detected!")
+
+
+
+"""
+===============================================================
+MINI CHALLENGE (HARDER · ~10 min): MOVIE TICKET PRICE
+===============================================================
+Create a function called calculate_ticket_price().
+
+1. The function should accept:
+    - age
+    - is_student (default value = False)
+2. Ticket pricing rules:
+    - Under 13 years old → $8
+    - 13 to 64 years old → $12
+    - 65 and older → $10
+3. If is_student is True,
+      subtract $2 from the ticket price.
+4. Return the final ticket price.
+5. Call the function twice:
+      - One regular customer
+      - One student
+6. Print the returned prices.
+"""
+
+def calculate_ticket_price(age, is_student=False):
+
+    if age < 13:
+        price = 8
+    elif age >= 65:
+        price = 10
+    else:
+        price = 12
+
+    if is_student:
+        price -= 2
+
+    return price
+
+ticket1 = calculate_ticket_price(30)
+ticket2 = calculate_ticket_price(20, True)
+
+print(f"Regular Ticket: ${ticket1}")
+print(f"Student Ticket: ${ticket2}")

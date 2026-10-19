@@ -1,7 +1,7 @@
 """
-if-else statement 
+if-else statement
 
-An if-else statement in Python is a conditional control structure that lets you decide which block 
+An if-else statement in Python is a conditional control structure that lets you decide which block
 of code to run depending on whether a condition is True or False.
 
 The if block runs only if the condition evaluates to True.
@@ -9,14 +9,13 @@ The if block runs only if the condition evaluates to True.
 •  You can also add elif (else if) blocks to check multiple conditions in sequence
 
 if condition:
-    - Code block runs if condition is True 
+    - Code block runs if condition is True
 elif another_condition:
     - Code block runs if the first condition is False
     - and this condition is True
 else:
     - Code block runs if none of the above conditions are True
 
-❌
 Conditional statements let us make decisions in code.
 The computer checks if something is True or False, then runs specific code.
 It lets you check *another condition* if the first one is NOT true.
@@ -47,6 +46,10 @@ if x > 5: print("x is greater than 5")
 # -------------------------------
 print("Even") if x % 2 == 0 else print("Odd")
 
+# Same idea, but giving back a VALUE you can store (more common in real code):
+label = "Even" if x % 2 == 0 else "Odd"
+print(label)
+
 # -------------------------------
 # NESTED IF STATEMENTS
 # -------------------------------
@@ -55,12 +58,12 @@ if x > 0:
         print("x is a positive number less than 20")
 
 # The word nested literally means “inside of something else.”
-# So in programming, a nested statement is when you put one block 
+# So in programming, a nested statement is when you put one block
 # of code inside another block.
 
 # Think of it like a box inside a box  —
-# the outer box runs first, and then the inner box runs only if the 
-# outer one allows it. 
+# the outer box runs first, and then the inner box runs only if the
+# outer one allows it.
 
 # -------------------------------
 # COMBINING CONDITIONS
@@ -70,8 +73,31 @@ age = 18
 if age >= 18 and age <= 21:
     print("You are between 18 and 21 years old")
 
+# -------------------------------
+# IF STATEMENTS WITH LISTS
+# -------------------------------
+# "in" and "not in" work great inside an if
+fruits = ["apple", "banana", "cherry"]
+
+if "banana" in fruits:
+    print("We have bananas!")
+
+if "mango" not in fruits:
+    print("Sorry, no mangoes today.")
+
+# An EMPTY list counts as False. A list with items in it counts as True.
+cart = []
+if cart:
+    print("Your cart has items")
+else:
+    print("Your cart is empty")   # <- this one runs
+
+cart.append("apple")
+if cart:
+    print("Your cart has items")  # <- now this one runs
+
 """
-Mini challenge
+MINI CHALLENGE (SIMPLE · 5-10 min): Grade Classifier
 
 1. Ask the user to enter a number from 0-100 and store it in a variable called "score".
 2. If the score is 90 or above, print "Grade: A".
@@ -79,7 +105,7 @@ Mini challenge
 4. If the score is between 70-79, print "Grade: C".
 5. Otherwise, print "Grade: F".
 
-❌6. Create a variable "passed" — set it to True if score >= 70, otherwise False.
+6. Create a variable "passed" — set it to True if score >= 70, otherwise False.
  BONUS: If passed is True, print "Congratulations!", otherwise print "Try again!"
 
 """
@@ -98,8 +124,9 @@ elif score >= 70:
 else:
     print("Grade: F")
 
-# Check if they passed (using a short-hand if/else) 
+# Check if they passed (using a short-hand if/else)
 passed = True if score >= 70 else False
+# (Even shorter: passed = score >= 70  -> a comparison already gives True/False)
 
 # BONUS: Message based on pass/fail
 if passed:
@@ -107,9 +134,9 @@ if passed:
 else:
     print("Try again!")
 
- 
+
 """
-Mini challenge 
+EXTRA PRACTICE (same pattern as the Grade challenge): Temperature
 
 1. Ask the user to enter today's temperature in Fahrenheit and store it in a variable called temperature.
 2. Use if-elif-else statements to classify the temperature:
@@ -142,7 +169,7 @@ else:
     jacket = False
 
 # 4. Bonus: Print a message depending on whether a jacket is needed
-if jacket == True:
+if jacket:   # no need to write "== True" -- jacket is already True/False
     print("Better wear a jacket!")
 else:
     print("No jacket needed.")
@@ -154,7 +181,7 @@ else:
 
 
 """
-Mini Challenge
+MINI CHALLENGE (HARDER · ~10 min): Club Entry
 
 1. Ask the user to enter their age and store it in a variable called age.
 2. Ask the user if they have a valid ID.
@@ -191,16 +218,16 @@ age = int(input("Enter your age: "))
 has_id = input("Do you have a valid ID? (yes/no): ").lower()
 
 # 6. Input validation
-if age < 0: 
+if age < 0:
     print("Invalid age entered.")
 
-else: 
+else:
 
     # 3. Determine admission status
     if age >= 21 and has_id == "yes":
         print("Access Granted")
 
-    elif age >= 21 and has_id == "no":
+    elif age >= 21:   # has_id must be "no" here -- the "yes" case was handled above
         print("Access Denied - ID Required")
 
     elif age >= 18:
@@ -216,4 +243,4 @@ else:
     if can_enter:
         print("Welcome inside!")
     else:
-        print("Please see the front desk.")
+        print("Please see the front desk.") 

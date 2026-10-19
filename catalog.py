@@ -1,3 +1,10 @@
+# catalog.py  -- DATA ONLY
+# This file just holds the list of products. store.py imports it with:
+#     from catalog import catalog
+# Run store.py (not this file). Don't paste the store code in here, or the
+# store would start twice (once while importing, once for real).
+ 
+
 catalog = [ # dictionary list of store products
     {
         "id": 4,
@@ -136,7 +143,7 @@ def pay():
 
 def add_product_to_catalog():
     # ID
-    while True:
+    while True: 
         prod_id_input = input("Enter product ID: ")
         if prod_id_input.isdigit():
             prod_id = int(prod_id_input)

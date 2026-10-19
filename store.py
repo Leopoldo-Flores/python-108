@@ -67,7 +67,7 @@ def search_product():
     if not found:
         print("Sorry, this item doesn’t exist.")
     print("---------------------\n")
-
+ 
 def view_cart():
     print_header("Your Cart")
     if not cart:

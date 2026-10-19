@@ -9,10 +9,10 @@
 student = {
     "name": "Leo",
     "age": 22,
-    "major": "Computer Science" 
+    "major": "Computer Science"
 }
 
-print(student)
+print(student) 
 
 # -------------------------------
 # WHY USE A DICTIONARY INSTEAD OF A LIST?
@@ -32,9 +32,14 @@ print(student)
 print(student["name"])     # Access by key
 print(student.get("major")) # Another way to access
 
+# So what's the difference? What happens with a key that DOESN'T exist:
+# print(student["email"])          # KeyError: 'email'  <- crashes the program (uncomment to show)
+print(student.get("email"))        # None   <- no crash
+print(student.get("email", "N/A")) # N/A    <- you choose what to give back instead
+
 # -------------------------------
 # ADDING NEW ITEMS
-# -------------------------------  
+# -------------------------------
 student["graduation_year"] = 2025
 print(student)
 
@@ -47,8 +52,9 @@ print(student)
 # -------------------------------
 # REMOVING ITEMS
 # -------------------------------
-student.pop("major")  # Removes "major"
+student.pop("major")  # Removes "major" (and hands back its value)
 print(student)
+# del student["age"] would also remove a key
 
 # -------------------------------
 # CHECK IF A KEY EXISTS
@@ -64,6 +70,22 @@ students = {
     "student2": {"name": "Alex", "age": 21}
 }
 print(students["student1"]["name"])  # Access nested value
+
+# -------------------------------
+# LIST OF DICTIONARIES (you will see this EVERYWHERE)
+# -------------------------------
+# A list of dictionaries is like a table: each dictionary is one row (one record).
+# This is the shape of a store catalog (catalog.py!), an API response (JSON)
+# and the documents stored in a database like MongoDB.
+products = [
+    {"id": 1, "title": "Mouse", "price": 14.99},
+    {"id": 2, "title": "Keyboard", "price": 63.87},
+]
+print(products[0]["title"])        # first product's title
+for product in products:           # loop through the records
+    print(f"{product['title']}: ${product['price']}")
+products.append({"id": 3, "title": "Monitor", "price": 199.99})   # add a new record
+print(len(products))               # 3
 
 # -------------------------------
 # LOOPING THROUGH A DICTIONARY
@@ -91,9 +113,9 @@ print(student)
 
 
 """
- ------------------------------- 
-MINI CHALLENGE: STUDENT REPORT CARD
--------------------------------
+===============================================================
+MINI CHALLENGE (SIMPLE · 5-10 min): STUDENT REPORT CARD
+===============================================================
 You need to store and analyze a student's grades.
 
 1. Create a dictionary called "report_card" with keys:
@@ -116,7 +138,7 @@ Example: {"name": "Leo", "subject": "Math", "grades": (90, 85, 88)}
 # -------------------------------
 
 # Create a dictionary to store info about a student
-# Uses {key: value} pairs 
+# Uses {key: value} pairs
 report_card = {
     "name": "Leo",
     "subject": "Math",
@@ -147,13 +169,13 @@ report_card.pop("subject")
 
 # Print the updated dictionary to show the final result
 print("Updated report card:", report_card)
- 
+
 
 
 """
--------------------------------
-MINI CHALLENGE: PLAYER PROFILE
--------------------------------
+===============================================================
+MINI CHALLENGE (HARDER · ~10 min): PLAYER PROFILE
+===============================================================
 You are creating a simple player profile for a game.
 
 1. Create a dictionary called "player" with the keys:
@@ -184,6 +206,11 @@ Example:
 
 6. Remove the "health" stat from the nested dictionary.
 7. Print the updated player dictionary.
+
+8. Create a second player (any username/level, attack of 40) and put BOTH players
+   in a list called "party".
+9. Loop through "party" and print each username with their attack.
+   Then print the username of the player with the HIGHEST attack.
 """
 
 # Create the player dictionary
@@ -217,3 +244,20 @@ player["stats"].pop("health")
 
 # Print updated dictionary
 print("Updated Player:", player)
+
+# 8. Second player + the party list (a list of dictionaries!)
+player2 = {
+    "username": "Nina",
+    "level": 7,
+    "stats": {"health": 80, "attack": 40}
+}
+party = [player, player2]
+
+# 9. Loop through the party and keep track of the strongest player so far
+strongest = party[0]
+for member in party:
+    print(member["username"], "attack:", member["stats"]["attack"])
+    if member["stats"]["attack"] > strongest["stats"]["attack"]:
+        strongest = member
+
+print("Strongest player:", strongest["username"])
