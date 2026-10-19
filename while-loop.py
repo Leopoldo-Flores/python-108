@@ -7,7 +7,7 @@ Be careful — if the condition never becomes False, you’ll get an INFINITE lo
 while condition:
     # Code block runs as long as condition is True
 """
-
+ 
 count = 1
 
 while count <= 5:
@@ -15,10 +15,10 @@ while count <= 5:
     count += 1  # Assignment opperator which increase count each time (so the loop eventually ends)
 
 print("__________________________________")
-
+ 
 
 # -------------------------------
-# USING break TO STOP THE LOOP 
+# USING break TO STOP THE LOOP  
 # -------------------------------
 number = 0
 

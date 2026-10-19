@@ -9,6 +9,18 @@ my_tuple = ("apple", "banana", "cherry")
 print(my_tuple)
 
 # -------------------------------
+# WHY USE A TUPLE INSTEAD OF A LIST?
+# -------------------------------
+# Both store multiple items in order, but a tuple LOCKS the data
+# so it can't be changed by accident. Use a tuple when the data
+# represents something that should stay constant, like:
+#   - the days of the week
+#   - GPS coordinates (latitude, longitude)
+#   - a date (year, month, day)
+# If you find yourself wanting to .append() or .remove() items, 
+# that's a sign you probably want a LIST instead of a tuple.
+
+# -------------------------------
 # ACCESSING ITEMS
 # -------------------------------
 print(my_tuple[0])   # First item
@@ -42,21 +54,46 @@ tuple2 = (1, 2, 3)
 combined = (tuple1, tuple2)
 print(combined)
 
+# -------------------------------
+# COUNT AND INDEX (the two methods tuples DO have)
+# -------------------------------
+# Because tuples are immutable, they don't have methods like
+# append(), remove(), or sort(). They only have count() and index().
+
+letters = ("a", "b", "a", "c", "a")
+print(letters.count("a"))  # How many times "a" appears -> 3
+print(letters.index("c"))  # The index where "c" first appears -> 3
 
 # -------------------------------
-#  MINI CHALLENGE: THE TRAVEL BAG
+# TUPLE UNPACKING
 # -------------------------------
-# You’re packing for a trip! You have a tuple that stores the items you’re taking.
+# You can "unpack" a tuple's items directly into separate variables.
+# This is a very common Python pattern.
 
-# 1. Create a tuple called "travel_bag" with at least 5 items (e.g. "shirt", "toothbrush", etc.)
-# 2. Print the SECOND and FOURTH items in your bag.
-# 3. Check if "shoes" is in your travel bag — if it is, print "You're ready to walk!"
-#     otherwise, print "You forgot your shoes!"
-# 4. Make a new tuple called "essentials" with 3 must-have items.
-# 5. Combine both tuples into one called "final_bag".
-# 6. Print how many total items you now have using len().
-# 7. Print the last item in your "final_bag".
+coordinates = (10, 20)
+x, y = coordinates
+print(x)  # 10
+print(y)  # 20
 
+person = ("Leo", 22, "Computer Science")
+name, age, major = person
+print(f"{name} is {age} years old and studies {major}")
+
+"""
+-------------------------------
+MINI CHALLENGE: THE TRAVEL BAG
+-------------------------------
+You’re packing for a trip! You have a tuple that stores the items you’re taking.
+
+1. Create a tuple called "travel_bag" with at least 5 items (e.g. "shirt", "toothbrush", etc.)
+2. Print the SECOND and FOURTH items in your bag.
+3. Check if "shoes" is in your travel bag — if it is, print "You're ready to walk!"
+    otherwise, print "You forgot your shoes!"
+4. Make a new tuple called "essentials" with 3 must-have items.
+5. Combine both tuples into one called "final_bag".
+6. Print how many total items you now have using len().
+7. Print the last item in your "final_bag".
+"""
 
 
 # -------------------------------
@@ -94,21 +131,21 @@ print("Last item:", final_bag[-1])
 
 
 """
-# -------------------------------
-#  MINI CHALLENGE: CLASS QUIZ ANALYZER
-# -------------------------------
-# You are analyzing quiz scores stored in a tuple.
+-------------------------------
+MINI CHALLENGE: CLASS QUIZ ANALYZER
+-------------------------------
+You are analyzing quiz scores stored in a tuple.
 
-# 1. Create a tuple called "quiz_scores" with at least 6 integer scores.
-# 2. Print the FIRST 3 scores and the LAST 3 scores using slicing.
-# 3. Print the HIGHEST and LOWEST score using built-in functions.
-# 4. Check if ANY score is below 70:
-#    - If yes, print "Warning: At least one failing score!"
-#    - Otherwise print "All students passed!"
-# 5. Create a new tuple called "bonus_scores" where each score is increased by 5.
-# 6. Combine "quiz_scores" and "bonus_scores" into a tuple called "final_scores".
-# 7. Print the total number of scores in "final_scores".
-# 8. Print the LAST score in "final_scores".
+1. Create a tuple called "quiz_scores" with at least 6 integer scores.
+2. Print the FIRST 3 scores and the LAST 3 scores using slicing.
+3. Print the HIGHEST and LOWEST score using built-in functions.
+4. Check if ANY score is below 70:
+   - If yes, print "Warning: At least one failing score!"
+   - Otherwise print "All students passed!"
+5. Create a new tuple called "bonus_scores" where each score is increased by 5.
+6. Combine "quiz_scores" and "bonus_scores" into a tuple called "final_scores".
+7. Print the total number of scores in "final_scores".
+8. Print the LAST score in "final_scores".
 """
 
 
@@ -131,11 +168,11 @@ print("Lowest score:", min(quiz_scores))
 if any(score < 70 for score in quiz_scores):
     print("Warning: At least one failing score!")
 else:
-    print("All students passed!")
+    print("All students passed!")  
 
 # Create bonus_scores tuple (add 5 to each score)
 bonus_scores = tuple(score + 5 for score in quiz_scores)
-
+ 
 # Combine tuples
 final_scores = quiz_scores + bonus_scores
 

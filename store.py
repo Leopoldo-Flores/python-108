@@ -15,7 +15,7 @@ def print_header(text):
 def print_menu():
     print("Menu")
     print(" 1.- View Catalog")
-    print(" 2.- Search Product")
+    print(" 2.- Search Product") 
     print(" 3.- View Cart") 
     print(" 4.- Add Product to Catalog")
     print(" 5.- Clear Cart")
@@ -143,7 +143,7 @@ def add_product_to_catalog():
 # ----------------------------
 option = ""
 while option != "q" and option != "Q":
-    print_header("Welcome to Store xy")
+    print_header("Welcome to Store xy") 
     print_menu()
 
     option = input("Choose an option: ")

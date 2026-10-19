@@ -9,7 +9,7 @@ The if block runs only if the condition evaluates to True.
 •  You can also add elif (else if) blocks to check multiple conditions in sequence
 
 if condition:
-    - Code block runs if condition is True
+    - Code block runs if condition is True 
 elif another_condition:
     - Code block runs if the first condition is False
     - and this condition is True
@@ -99,17 +99,17 @@ else:
     print("Grade: F")
 
 # Check if they passed (using a short-hand if/else) 
-# passed = True if score >= 70 else False
+passed = True if score >= 70 else False
 
-# # BONUS: Message based on pass/fail
-# if passed:
-#     print("Congratulations!")
-# else:
-#     print("Try again!")
+# BONUS: Message based on pass/fail
+if passed:
+    print("Congratulations!")
+else:
+    print("Try again!")
 
  
 """
-Mini challenge
+Mini challenge 
 
 1. Ask the user to enter today's temperature in Fahrenheit and store it in a variable called temperature.
 2. Use if-elif-else statements to classify the temperature:
@@ -191,10 +191,10 @@ age = int(input("Enter your age: "))
 has_id = input("Do you have a valid ID? (yes/no): ").lower()
 
 # 6. Input validation
-if age < 0:
+if age < 0: 
     print("Invalid age entered.")
 
-else:
+else: 
 
     # 3. Determine admission status
     if age >= 21 and has_id == "yes":

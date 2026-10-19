@@ -18,7 +18,7 @@
 # NOTE: "res" is just a variable that stores the RESULT of the operation.
  
 x = 1
-y = 2
+y = 2 
 res = 0
 
 res = x + y   # ➕ Addition (1 + 2 = 3)
@@ -66,7 +66,7 @@ x /= 3  # same as: x = x / 3 → (x becomes 7.0)
 
 x = 3
 y = 10
-z = 3
+z = 10
 
 print(x == y and y == z)  # False, because both conditions are NOT true
 print(x == y or y == z)   # True, because at least one condition is true
@@ -77,7 +77,7 @@ print(not x == y)         # True, because x == y is False, and NOT flips it
 # is → checks if two things are the exact same object in memory
 # is not → checks if they are NOT the same
 
-x = 3
+x = 3 
 y = 3
 print(x is y)       # Returns True if both variables are the same object
 print(x is not y)   # Returns True if both variables are not the same object
@@ -92,3 +92,53 @@ x = [1, 2, 3, 4, 5]  # this is a list
 
 print(4 in x)     # True, because 4 is inside the list
 print(9 not in x) # True, because 9 is NOT inside the list
+
+
+
+# -------------------------------
+#  MINI CHALLENGE: MOVIE TICKET DISCOUNT
+# -------------------------------
+# A theater is running a promotion.
+ 
+# 1. Create variables: ticket_price = 12, has_coupon = True, is_member = False
+# 2. Use an ARITHMETIC operator to apply a $3 discount if has_coupon is True.
+# 3. Use a LOGICAL operator to check: if has_coupon AND is_member are both True,
+#    apply an EXTRA $2 discount on top.
+# 4. Use a COMPARISON operator to check if the final price is less than $10 --
+#    if so print "Great deal!", otherwise print "Still a fair price."
+# 5. Use a MEMBERSHIP operator to check if "popcorn" is in a list called
+#    concession_items -- print a message either way.
+ 
+ 
+ 
+# -------------------------------
+#  SOLUTION: MOVIE TICKET DISCOUNT
+# -------------------------------
+  
+ticket_price = 12
+has_coupon = True
+is_member = False 
+ 
+# Arithmetic + assignment operator: apply coupon discount
+if has_coupon:
+    ticket_price -= 3   # same as: ticket_price = ticket_price - 3
+ 
+# Logical operator: extra discount only if BOTH conditions are true
+if has_coupon and is_member:
+    ticket_price -= 2
+ 
+# Comparison operator: check the final price
+if ticket_price < 10:
+    print("Great deal!")
+else:
+    print("Still a fair price.")
+ 
+print(f"Final ticket price: ${ticket_price}")
+ 
+# Membership operator: check the concession stand
+concession_items = ["popcorn", "soda", "candy", "nachos"]
+ 
+if "popcorn" in concession_items:
+    print("Popcorn is available!")
+else:
+    print("Sorry, no popcorn today.")

@@ -9,11 +9,23 @@
 student = {
     "name": "Leo",
     "age": 22,
-    "major": "Computer Science"
+    "major": "Computer Science" 
 }
 
 print(student)
- 
+
+# -------------------------------
+# WHY USE A DICTIONARY INSTEAD OF A LIST?
+# -------------------------------
+# Use a dictionary when you need to look something up by a
+# meaningful NAME (key) instead of a numbered position.
+# Compare these two ways of storing the same student:
+#   student_list = ["Leo", 22, "Computer Science"]   # what is student_list[1]? you have to remember
+#   student_dict = {"name": "Leo", "age": 22, "major": "Computer Science"}  # student_dict["age"] is self-explanatory
+# Dictionaries are the go-to choice whenever your data naturally
+# comes in labeled pairs -- a database record, a JSON API response,
+# settings/configuration, or anything you'd describe with "the ___ of ___."
+
 # -------------------------------
 # ACCESSING ITEMS
 # -------------------------------
@@ -53,27 +65,50 @@ students = {
 }
 print(students["student1"]["name"])  # Access nested value
 
+# -------------------------------
+# LOOPING THROUGH A DICTIONARY
+# -------------------------------
+# .keys()   -> just the keys
+# .values() -> just the values
+# .items()  -> key/value pairs together (most commonly used in loops)
 
+for key in student.keys():
+    print(key)
+
+for value in student.values():
+    print(value)
+
+for key, value in student.items():
+    print(f"{key}: {value}")
 
 # -------------------------------
-#  MINI CHALLENGE: STUDENT REPORT CARD  MC2.md
+# UPDATING MULTIPLE KEYS AT ONCE
 # -------------------------------
-# You need to store and analyze a student's grades.
+# update() merges a second dictionary into the first one.
+# Existing keys get overwritten, new keys get added.
+student.update({"age": 24, "gpa": 3.8})
+print(student)
 
-# 1. Create a dictionary called "report_card" with keys:
-#     - "name"
-#     - "subject"
-#     - "grades" (use a tuple with 3 numbers)
-# Example: {"name": "Leo", "subject": "Math", "grades": (90, 85, 88)}
 
-# 2. Print the student's name and subject.
-# 3. Calculate the average of the 3 grades (HINT: use sum() and len()).
-# 4. Add a new key called "average" with the calculated result.
-# 5. If the average is 90 or above → print "Excellent!"
-#     If between 70 and 89 → print "Good job!"
-#     Otherwise → print "Needs improvement!"
-# 6. Remove the "subject" key and print the updated dictionary.
+"""
+ ------------------------------- 
+MINI CHALLENGE: STUDENT REPORT CARD
+-------------------------------
+You need to store and analyze a student's grades.
 
+1. Create a dictionary called "report_card" with keys:
+    -"name"
+    - "subject"
+    - "grades" (use a tuple with 3 numbers)
+Example: {"name": "Leo", "subject": "Math", "grades": (90, 85, 88)}
+2. Print the student's name and subject.
+3. Calculate the average of the 3 grades (HINT: use sum() and len()).
+4. Add a new key called "average" with the calculated result.
+5. If the average is 90 or above → print "Excellent!"
+    If between 70 and 89 → print "Good job!"
+    Otherwise → print "Needs improvement!"
+6. Remove the "subject" key and print the updated dictionary.
+"""
 
 
 # -------------------------------
@@ -116,44 +151,39 @@ print("Updated report card:", report_card)
 
 
 """
-# -------------------------------
-# MINI CHALLENGE: PLAYER PROFILE
-# -------------------------------
-# You are creating a simple player profile for a game.
+-------------------------------
+MINI CHALLENGE: PLAYER PROFILE
+-------------------------------
+You are creating a simple player profile for a game.
 
-# 1. Create a dictionary called "player" with the keys:
-#     - "username"
-#     - "level"
-#     - "stats"
-#
-# The "stats" key should store another dictionary containing:
-#     - "health"
-#     - "attack"
-#
-# Example:
-# {
-#     "username": "Leo",
-#     "level": 5,
-#     "stats": {
-#         "health": 100,
-#         "attack": 25
-#     }
-# }
+1. Create a dictionary called "player" with the keys:
+    - "username"
+    - "level"
+    - "stats"
+The "stats" key should store another dictionary containing:
+    - "health"
+    - "attack"
+Example:
+{
+    "username": "Leo",
+    "level": 5,
+    "stats": {
+        "health": 100,
+        "attack": 25
+    }
+}
 
-# 2. Print the player's username and level.
+2. Print the player's username and level.
+3. Increase the player's level by 1.
+4. Add a new key called "gold" and give the player 500 gold.
 
-# 3. Increase the player's level by 1.
+5. If the player's attack is 30 or higher:
+      print("Strong player!")
+   Otherwise:
+      print("Needs more training!")
 
-# 4. Add a new key called "gold" and give the player 500 gold.
-
-# 5. If the player's attack is 30 or higher:
-#       print("Strong player!")
-#    Otherwise:
-#       print("Needs more training!")
-
-# 6. Remove the "health" stat from the nested dictionary.
-
-# 7. Print the updated player dictionary.
+6. Remove the "health" stat from the nested dictionary.
+7. Print the updated player dictionary.
 """
 
 # Create the player dictionary
@@ -187,6 +217,3 @@ player["stats"].pop("health")
 
 # Print updated dictionary
 print("Updated Player:", player)
-
-
-

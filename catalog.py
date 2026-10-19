@@ -8,14 +8,14 @@ catalog = [ # dictionary list of store products
         "id": 2,
         "title": "Coffee mug",
         "price": 34.99
-    },
+    }, 
     {
         "id": 9,
         "title": "Trackpad",
         "price": 97.93
     },
     { 
-        "id": 7,
+        "id": 7, 
         "title": "Mouse", 
         "price": 14.99
     },
@@ -46,7 +46,7 @@ def print_menu():
     print(" 6.- Pay")
     print("")
     print(" Q.- Quit")
-
+ 
 # ----------------------------
 # Catalog and Cart Functions
 # ----------------------------

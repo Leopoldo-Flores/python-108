@@ -12,9 +12,10 @@ for variable in sequence:
 """
 
 # Loop through a list
-fruits = ["apple", "banana", "cherry"] # convert to tuple use () not []
+fruits = ["apple", "banana", "cherry"] # convert to tuple use () not [] 
 for fruit in fruits: # for each fruit in the list fruits
     print(fruit)
+ 
 
 print("__________________________________")
 
@@ -24,20 +25,6 @@ for letter in "hello": # ask them what they think it would print
 
 print("__________________________________")
 
-# Basic example
-fruits = ["apple", "banana", "cherry"]
-
-
-for fruit in fruits:
-    print(fruit)
-
-print("__________________________________")
-
-
-for letter in "Leo":
-    print(letter)
-
-print("__________________________________")
 
 # range() generates a sequence of numbers
 
@@ -90,10 +77,57 @@ for x in range(10):
         break     # Stop loop completely
     print(x)
 
+print("__________________________________")
+
+# -------------------------------
+# ENUMERATE() -- get the index AND the value
+# -------------------------------
+# Sometimes you need to know WHICH position an item is at while
+# you loop through it. enumerate() gives you both at once instead
+# of having to track a counter variable yourself.
+
+fruits = ["apple", "banana", "cherry"]
+
+for index, fruit in enumerate(fruits):
+    print(index, fruit)   # 0 apple, 1 banana, 2 cherry
+
+# You can even choose where the counting starts
+for index, fruit in enumerate(fruits, start=1):
+    print(f"{index}. {fruit}")   # 1. apple, 2. banana, 3. cherry
+
+print("__________________________________")
+
+# -------------------------------
+# ZIP() -- loop through two lists together
+# -------------------------------
+# zip() pairs up items from multiple sequences by position,
+# so you can loop through them side by side.
+
+names = ["Leo", "Alex", "Nina"]
+scores = [92, 85, 78]
+
+for name, score in zip(names, scores):
+    print(f"{name} scored {score}")
+
+print("__________________________________")
+
+# -------------------------------
+# NESTED FOR LOOPS (a loop inside a loop)
+# -------------------------------
+# The inner loop runs COMPLETELY for every single pass of the outer loop.
+# Common use case: working with a grid, a multiplication table, or
+# comparing every item in one list against every item in another.
+
+for row in range(1, 4):
+    for col in range(1, 4):
+        print(f"({row}, {col})", end="  ")
+    print()  # move to a new line after each row finishes
+
+print("__________________________________")
 
 
 """
-Mini-challenge
+Mini-challenge- Multiplication table
 1. Ask the user to enter a number and store it in a variable called num.
 2. Use a for loop with range(1, 11) to repeat 10 times (from 1 to 10).
 3. Inside the loop, multiply num by the current loop value (i).

@@ -9,6 +9,19 @@ fruits = {"apple", "banana", "cherry"}
 print(fruits)
 
 # -------------------------------
+# WHY USE A SET INSTEAD OF A LIST?
+# -------------------------------
+# Use a set when you don't care about order and you need to
+# guarantee there are NO duplicates, or when you need to quickly
+# compare two groups of items (who's in both? who's only in one?).
+# Examples: unique visitor IDs, tags on a post, ingredients that
+# overlap between two recipes.
+# A set also checks "is this item in here?" much faster than a 
+# list does once you get into large amounts of data -- that's a
+# side benefit, but the main reason to reach for a set is
+# "I need uniqueness" or "I need union/intersection/difference."
+
+# -------------------------------
 # NO DUPLICATES ALLOWED
 # -------------------------------
 fruits = {"apple", "banana", "apple"}
@@ -48,28 +61,39 @@ set2 = {3, 4, 5, 6}
 
 print(set1.union(set2))        # Combine both (no duplicates)
 print(set1.intersection(set2)) # Common elements
-print(set1.difference(set2))   # What’s only in set1
-
-
+print(set1.difference(set2))   # What's only in set1
+print(set1.symmetric_difference(set2))  # Everything EXCEPT what's shared
 
 # -------------------------------
-#  MINI CHALLENGE: PARTY GUEST LIST MC4.md
+# FROZENSET (a "locked" set)
 # -------------------------------
-# You’re organizing a party! You have two sets of guests.
+# A frozenset works just like a set, but it's IMMUTABLE -- once
+# created, you can't add or remove items. You won't use these often
+# as a beginner, but it's good to know they exist for the same
+# reason tuples exist alongside lists: sometimes you want to
+# guarantee your data can't be changed.
+locked_set = frozenset(["a", "b", "c"])
+print(locked_set)
+# locked_set.add("d")  # This would raise an AttributeError
 
-# 1. Create two sets:
-#     - invited_friends = {"Alex", "Sam", "Leo", "Nina"}
-#     - rsvped = {"Nina", "Sam", "Jordan"}
+"""
+-------------------------------
+MINI CHALLENGE: PARTY GUEST LIST MC4.md
+-------------------------------
+You’re organizing a party! You have two sets of guests.
 
-# 2. Print:
-#     - Everyone who was invited (union)
-#     - Everyone who said they’re coming (rsvped)
-#     - Who hasn’t replied yet (difference)
-
-# 3. Add two new names to invited_friends.
-# 4. One of the people canceled — remove them from rsvped.
-# 5. Print how many total confirmed guests are attending.
-# 6. Check if "Leo" is still coming — print a message depending on the result.
+1. Create two sets:
+    - invited_friends = {"Alex", "Sam", "Leo", "Nina"}
+    - rsvped = {"Nina", "Sam", "Jordan"}
+2. Print:
+    - Everyone who was invited (union)
+    - Everyone who said they’re coming (rsvped)
+    - Who hasn’t replied yet (difference)
+3. Add two new names to invited_friends.
+4. One of the people canceled — remove them from rsvped.
+5. Print how many total confirmed guests are attending.
+6. Check if "Leo" is still coming — print a message depending on the result.
+"""
 
 # -------------------------------
 #  SOLUTION: PARTY GUEST LIST
@@ -95,7 +119,7 @@ invited_friends.update(["Taylor", "Maya"])
 rsvped.remove("Jordan")
  
 # len() gives how many items are inside the set
-print("Total confirmed guests:", len(rsvped))
+print("Total confirmed guests:", len(rsvped)) 
 
 # Check if a specific guest is in the set
 if "Leo" in rsvped:
@@ -109,32 +133,25 @@ else:
 
 
 """
-# -------------------------------
-#  MINI CHALLENGE: STUDY GROUPS
-# -------------------------------
-# Two study groups are preparing for an exam.
-
-# 1. Create two sets:
-#     - group_a = {"Leo", "Sam", "Alex", "Nina"}
-#     - group_b = {"Nina", "Jordan", "Sam", "Taylor"}
-
-# 2. Print:
-#     - All students participating in either group (union)
-#     - Students who are in BOTH groups (intersection)
-#     - Students who are only in group_a (difference)
-
-# 3. Add "Maya" to group_a.
-
-# 4. Remove "Jordan" from group_b.
-
-# 5. Print the total number of unique students across both groups.
-
-# 6. If "Nina" is in both groups,
-#       print("Nina is helping both groups!")
-#    Otherwise,
-#       print("Nina is only in one group.")
-
-# 7. Print the final version of both sets.
+-------------------------------
+MINI CHALLENGE: STUDY GROUPS
+-------------------------------
+Two study groups are preparing for an exam.
+1. Create two sets:
+    - group_a = {"Leo", "Sam", "Alex", "Nina"}
+    - group_b = {"Nina", "Jordan", "Sam", "Taylor"}
+2. Print:
+    - All students participating in either group (union)
+    - Students who are in BOTH groups (intersection)
+    - Students who are only in group_a (difference)
+3. Add "Maya" to group_a.
+4. Remove "Jordan" from group_b.
+5. Print the total number of unique students across both groups.
+6. If "Nina" is in both groups,
+      print("Nina is helping both groups!")
+   Otherwise,
+      print("Nina is only in one group.")
+7. Print the final version of both sets.
 """
 
 # Create the sets

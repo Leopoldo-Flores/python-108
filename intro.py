@@ -14,7 +14,7 @@ print("Didn't save") #show this as en example of what happens when you don't sav
 """
 This is a multi-line comment
 You can use triple quotes to create multi-line comments
-"""
+""" 
 # This is useful for explaining longer sections of code
  
 
@@ -129,7 +129,7 @@ print(age + int(new_age)) ### 23 + 20 = 43
 new_age = int(input("Enter your age here: ")) # this will store the value in the variable new_age
 print(int(age) + new_age) ### 23 + 20 = 43
 
-# example of converting age to a string
+# example of converting age to a string 
 # print(str(age) + new_age) # 2320 # bc adding both string just puts them together with no space
 # if its numbers it will add them together if both are integers 
 
